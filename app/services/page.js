@@ -74,7 +74,7 @@ const services = [
     title: 'Prestations de Services',
     description:
       "Solutions logistiques sur-mesure adaptées à vos besoins spécifiques à Kribi et Douala.",
-    image: '/images/solutions-logistiques.jpg',
+    image: '/images/port-vue-aerienne.jpg',
     items: [],
   },
 ];
@@ -83,8 +83,8 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        image="/images/port-vue-aerienne.jpg"
-        alt="Vue aérienne d'un terminal portuaire à conteneurs"
+        image="/images/solutions-logistiques.jpg"
+        alt="Solutions logistiques : transport, fret et distribution"
         priority
       >
         <div className="container-px mx-auto max-w-6xl py-14 text-white sm:py-20">

@@ -1,8 +1,9 @@
 import Image from 'next/image';
 
 // Bandeau d'en-tête : photo en fond, voile navy par-dessus pour garder le
-// texte lisible. Les photos sources sont en définition modeste, d'où le
-// `object-cover` et un voile assez dense qui masque la montée en échelle.
+// texte lisible. La photo passant sous un voile dense, la qualité est
+// volontairement plafonnée à 80 — au-delà le gain ne se voit pas et
+// n'alourdit que la page.
 export default function PageHero({ image, alt = '', priority = false, children }) {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950">
@@ -11,6 +12,7 @@ export default function PageHero({ image, alt = '', priority = false, children }
         alt={alt}
         fill
         priority={priority}
+        quality={80}
         sizes="100vw"
         className="object-cover object-center"
       />

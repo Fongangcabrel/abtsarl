@@ -164,6 +164,7 @@ export default function HomePage() {
             src="/images/solutions-logistiques.jpg"
             alt=""
             fill
+            quality={80}
             sizes="(min-width: 1024px) 1024px, 100vw"
             className="-z-10 object-cover"
           />
