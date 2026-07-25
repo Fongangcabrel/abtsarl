@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ServiceCard from '../../components/ServiceCard';
 import PageHero from '../../components/PageHero';
+import Reveal from '../../components/Reveal';
 
 export const metadata = {
   title: 'Services — ABT African Business Trade',
@@ -88,13 +89,22 @@ export default function ServicesPage() {
         priority
       >
         <div className="container-px mx-auto max-w-6xl py-14 text-white sm:py-20">
-          <span className="manifest-tag !border-white/20 !bg-white/10 !text-white">
+          <span
+            className="rise-in manifest-tag !border-white/20 !bg-white/10 !text-white"
+            style={{ '--rise-delay': '80ms' }}
+          >
             Notre expertise
           </span>
-          <h1 className="mt-5 max-w-2xl font-display text-3xl font-semibold sm:text-4xl lg:text-5xl">
+          <h1
+            className="rise-in title-page mt-5 max-w-2xl font-display font-semibold"
+            style={{ '--rise-delay': '200ms' }}
+          >
             Des services adaptés à vos besoins logistiques
           </h1>
-          <p className="mt-4 max-w-xl font-body text-white/75">
+          <p
+            className="rise-in mt-4 max-w-xl font-body text-white/75"
+            style={{ '--rise-delay': '320ms' }}
+          >
             Une expertise complète : douane, transport, manutention et stockage, au service de
             vos opérations à Kribi et Douala.
           </p>
@@ -102,15 +112,17 @@ export default function ServicesPage() {
       </PageHero>
 
       <section className="container-px mx-auto max-w-6xl py-14 sm:py-20">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {services.map((s) => (
-            <ServiceCard key={s.id} {...s} />
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s, i) => (
+            <Reveal key={s.id} delay={(i % 3) * 90}>
+              <ServiceCard {...s} />
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="container-px mx-auto max-w-6xl pb-20">
-        <div className="rounded-3xl bg-navy-800 px-6 py-12 text-center sm:px-12 sm:py-16">
+        <Reveal className="rounded-3xl bg-navy-800 px-6 py-12 text-center sm:px-12 sm:py-16">
           <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">
             Une marchandise à transporter ou dédouaner ?
           </h2>
@@ -119,11 +131,11 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-7 inline-flex items-center justify-center rounded-full bg-gold-500 px-7 py-3.5 font-body text-sm font-semibold text-navy-950 hover:bg-gold-400"
+            className="mt-7 inline-flex items-center justify-center rounded-full bg-gold-500 px-7 py-4 font-body text-sm font-semibold text-navy-950 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400 active:translate-y-0"
           >
             Demander un devis
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

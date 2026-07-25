@@ -14,7 +14,7 @@ export default function ServiceCard({
   return (
     <div
       id={id}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-navy-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold-400 hover:shadow-lg hover:shadow-navy-900/10"
     >
       {image && (
         <div className="relative h-40 w-full overflow-hidden bg-navy-100 sm:h-44">
@@ -26,7 +26,7 @@ export default function ServiceCard({
             sizes="(min-width: 640px) 50vw, 100vw"
             className={`object-cover transition-transform duration-500 group-hover:scale-105 ${imagePosition}`}
           />
-          <div className="absolute inset-0 bg-navy-950/25" />
+          <div className="absolute inset-0 bg-navy-950/25 transition-colors duration-300 group-hover:bg-navy-950/10" />
         </div>
       )}
       <div className="flex flex-1 flex-col p-6 sm:p-7">
@@ -34,7 +34,7 @@ export default function ServiceCard({
           <span className="manifest-tag">{code}</span>
           <span className="h-2 w-2 rounded-full bg-gold-500" aria-hidden="true" />
         </div>
-        <h3 className="mb-2 font-display text-lg font-semibold text-navy-900 sm:text-xl">
+        <h3 className="mb-2 font-display text-lg font-semibold text-navy-900 transition-colors duration-300 group-hover:text-navy-700 sm:text-xl">
           {title}
         </h3>
         <p className="mb-4 font-body text-sm leading-relaxed text-ink-700">{description}</p>

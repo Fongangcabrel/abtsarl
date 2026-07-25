@@ -3,6 +3,7 @@ import Image from 'next/image';
 import RouteMap from '../components/RouteMap';
 import ServiceCard from '../components/ServiceCard';
 import PageHero from '../components/PageHero';
+import Reveal from '../components/Reveal';
 
 const services = [
   {
@@ -47,21 +48,33 @@ export default function HomePage() {
         priority
       >
         <div className="container-px mx-auto max-w-6xl py-16 text-white sm:py-24 lg:py-28">
-          <span className="manifest-tag !border-white/20 !bg-white/10 !text-white">
+          <span
+            className="rise-in manifest-tag !border-white/20 !bg-white/10 !text-white"
+            style={{ '--rise-delay': '80ms' }}
+          >
             Commissionnaire &amp; opérateur logistique
           </span>
-          <h1 className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.1] sm:text-5xl lg:text-6xl">
+          <h1
+            className="rise-in title-hero mt-6 max-w-2xl font-display font-semibold"
+            style={{ '--rise-delay': '200ms' }}
+          >
             Votre partenaire{' '}
             <span className="text-gold-400">transport &amp; logistique</span> à Kribi et Douala
           </h1>
-          <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-white/75 sm:text-lg">
+          <p
+            className="rise-in mt-6 max-w-xl font-body text-base leading-relaxed text-white/75 sm:text-lg"
+            style={{ '--rise-delay': '340ms' }}
+          >
             Douane, transit, transport national et manutention pour vos opérations import/export
             au Cameroun et vers l&rsquo;hinterland — RCA, Tchad, Congo.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div
+            className="rise-in mt-9 flex flex-col gap-3 sm:flex-row"
+            style={{ '--rise-delay': '460ms' }}
+          >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 font-body text-sm font-semibold text-navy-950 transition-colors hover:bg-gold-400"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-4 font-body text-sm font-semibold text-navy-950 shadow-lg shadow-gold-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-xl hover:shadow-gold-600/30 active:translate-y-0"
             >
               Demander un devis
             </Link>
@@ -69,7 +82,7 @@ export default function HomePage() {
               href="https://wa.me/237696404963"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-3.5 font-body text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-4 font-body text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 active:translate-y-0"
             >
               Contacter par WhatsApp
             </a>
@@ -79,34 +92,39 @@ export default function HomePage() {
 
       {/* Services overview */}
       <section className="container-px mx-auto max-w-6xl py-16 sm:py-24">
-        <div className="max-w-xl">
+        <Reveal className="max-w-xl">
           <p className="eyebrow">Ce que nous faisons</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+          <h2 className="title-section mt-3 font-display font-semibold text-navy-900">
             Nos services
           </h2>
-        </div>
+        </Reveal>
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {services.map((s) => (
-            <ServiceCard key={s.title} {...s} />
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 90}>
+              <ServiceCard {...s} />
+            </Reveal>
           ))}
         </div>
-        <div className="mt-8">
+        <Reveal className="mt-8">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 font-body text-sm font-semibold text-navy-800 underline decoration-gold-500 decoration-2 underline-offset-4"
+            className="group inline-flex items-center gap-2 font-body text-sm font-semibold text-navy-800 underline decoration-gold-500 decoration-2 underline-offset-4 transition-colors hover:text-navy-600"
           >
-            Voir tous nos services →
+            Voir tous nos services
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       {/* Why ABT */}
       <section className="bg-navy-950 text-white">
         <div className="container-px mx-auto max-w-6xl py-16 sm:py-24">
-          <p className="eyebrow">Pourquoi ABT</p>
-          <h2 className="mt-3 max-w-lg font-display text-3xl font-semibold sm:text-4xl">
-            L&rsquo;intégrité dans les affaires
-          </h2>
+          <Reveal>
+            <p className="eyebrow">Pourquoi ABT</p>
+            <h2 className="title-section mt-3 max-w-lg font-display font-semibold">
+              L&rsquo;intégrité dans les affaires
+            </h2>
+          </Reveal>
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
             {[
               {
@@ -121,11 +139,15 @@ export default function HomePage() {
                 title: 'Équipement dédié',
                 text: 'Reach stacker, Hammar, chariots élévateurs, Hiab et grues pour toute manutention lourde.',
               },
-            ].map((f) => (
-              <div key={f.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            ].map((f, i) => (
+              <Reveal
+                key={f.title}
+                delay={i * 110}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-400/40 hover:bg-white/10"
+              >
                 <h3 className="font-display text-lg font-semibold text-gold-400">{f.title}</h3>
                 <p className="mt-2 font-body text-sm leading-relaxed text-white/70">{f.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -134,9 +156,9 @@ export default function HomePage() {
       {/* Coverage */}
       <section className="container-px mx-auto max-w-6xl py-16 sm:py-24">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="eyebrow">Couverture géographique</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-navy-900 sm:text-4xl">
+            <h2 className="title-section mt-3 font-display font-semibold text-navy-900">
               Kribi, Douala et l&rsquo;hinterland
             </h2>
             <p className="mt-4 font-body text-sm leading-relaxed text-ink-700 sm:text-base">
@@ -150,16 +172,20 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="rounded-2xl border border-navy-100 bg-sand-50 p-6">
-            <RouteMap variant="dark" className="h-auto w-full" />
-          </div>
+          </Reveal>
+          {/* Reveal porte la classe qui déclenche le tracé du corridor */}
+          <Reveal
+            delay={120}
+            className="route-animated rounded-2xl border border-navy-100 bg-sand-50 p-6"
+          >
+            <RouteMap variant="dark" animated className="h-auto w-full" />
+          </Reveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="container-px mx-auto max-w-6xl pb-20">
-        <div className="relative isolate overflow-hidden rounded-3xl px-6 py-12 text-center sm:px-12 sm:py-16">
+        <Reveal className="relative isolate overflow-hidden rounded-3xl px-6 py-12 text-center sm:px-12 sm:py-16">
           <Image
             src="/images/solutions-logistiques.jpg"
             alt=""
@@ -177,11 +203,11 @@ export default function HomePage() {
           </p>
           <Link
             href="/contact"
-            className="mt-7 inline-flex items-center justify-center rounded-full bg-gold-500 px-7 py-3.5 font-body text-sm font-semibold text-navy-950 hover:bg-gold-400"
+            className="mt-7 inline-flex items-center justify-center rounded-full bg-gold-500 px-7 py-4 font-body text-sm font-semibold text-navy-950 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400 active:translate-y-0"
           >
             Demander un devis gratuit
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

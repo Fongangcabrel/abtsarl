@@ -1,5 +1,6 @@
 import ContactForm from '../../components/ContactForm';
 import PageHero from '../../components/PageHero';
+import Reveal from '../../components/Reveal';
 
 export const metadata = {
   title: 'Contact — ABT African Business Trade',
@@ -27,13 +28,22 @@ export default function ContactPage() {
         priority
       >
         <div className="container-px mx-auto max-w-6xl py-14 text-white sm:py-20">
-          <span className="manifest-tag !border-white/20 !bg-white/10 !text-white">
+          <span
+            className="rise-in manifest-tag !border-white/20 !bg-white/10 !text-white"
+            style={{ '--rise-delay': '80ms' }}
+          >
             Contactez-nous
           </span>
-          <h1 className="mt-5 max-w-2xl font-display text-3xl font-semibold sm:text-4xl lg:text-5xl">
+          <h1
+            className="rise-in title-page mt-5 max-w-2xl font-display font-semibold"
+            style={{ '--rise-delay': '200ms' }}
+          >
             Parlons de votre projet
           </h1>
-          <p className="mt-4 max-w-xl font-body text-white/75">
+          <p
+            className="rise-in mt-4 max-w-xl font-body text-white/75"
+            style={{ '--rise-delay': '320ms' }}
+          >
             Notre équipe est à votre disposition pour répondre à vos questions et vous
             accompagner dans vos opérations de transport et de logistique.
           </p>
@@ -42,16 +52,16 @@ export default function ContactPage() {
 
       <section className="container-px mx-auto max-w-6xl py-14 sm:py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="eyebrow">Informations</p>
-            <h2 className="mt-3 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+            <h2 className="title-section mt-3 font-display font-semibold text-navy-900">
               Nos coordonnées
             </h2>
             <ul className="mt-8 space-y-4">
               {infoItems.map((item, i) => (
                 <li
                   key={`${item.label}-${i}`}
-                  className="rounded-xl border border-navy-100 bg-sand-50 px-5 py-4"
+                  className="rounded-xl border border-navy-100 bg-sand-50 px-5 py-4 transition-colors duration-300 hover:border-gold-400/50 hover:bg-white"
                 >
                   <p className="font-body text-xs uppercase tracking-wide text-ink-500">
                     {item.label}
@@ -74,21 +84,21 @@ export default function ContactPage() {
               href="https://wa.me/237696404963"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 font-body text-sm font-semibold text-white hover:brightness-105"
+              className="mt-6 flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 font-body text-sm font-semibold text-white shadow-lg shadow-[#25D366]/20 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0"
             >
               Discuter sur WhatsApp
             </a>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={120}>
             <p className="eyebrow">Formulaire</p>
-            <h2 className="mt-3 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+            <h2 className="title-section mt-3 font-display font-semibold text-navy-900">
               Envoyez-nous un message
             </h2>
             <div className="mt-8 rounded-2xl border border-navy-100 bg-white p-6 shadow-sm sm:p-8">
               <ContactForm />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>
