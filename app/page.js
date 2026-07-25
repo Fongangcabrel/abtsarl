@@ -4,6 +4,18 @@ import RouteMap from '../components/RouteMap';
 import ServiceCard from '../components/ServiceCard';
 import PageHero from '../components/PageHero';
 import Reveal from '../components/Reveal';
+import Stats from '../components/Stats';
+import Certifications from '../components/Certifications';
+import Testimonials from '../components/Testimonials';
+
+// Photos qui s'enchaînent en fond du bandeau d'accueil (effet film).
+const heroSlides = [
+  { src: '/images/port-conteneurs.jpg', alt: 'Terminal à conteneurs au coucher du soleil' },
+  { src: '/images/import-export.jpg', alt: "Opérations d'import-export au port" },
+  { src: '/images/entrepot.jpg', alt: 'Entrepôt logistique ABT' },
+  { src: '/images/parc-conteneurs.jpg', alt: 'Parc à conteneurs' },
+  { src: '/images/engins.jpg', alt: 'Manutention par reach stacker' },
+];
 
 const services = [
   {
@@ -41,12 +53,8 @@ const services = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <PageHero
-        image="/images/port-conteneurs.jpg"
-        alt="Terminal à conteneurs au coucher du soleil"
-        priority
-      >
+      {/* Hero — diaporama cinématique */}
+      <PageHero images={heroSlides} priority>
         <div className="container-px mx-auto max-w-6xl py-16 text-white sm:py-24 lg:py-28">
           <span
             className="rise-in manifest-tag !border-white/20 !bg-white/10 !text-white"
@@ -116,6 +124,9 @@ export default function HomePage() {
         </Reveal>
       </section>
 
+      {/* Chiffres clés */}
+      <Stats />
+
       {/* Why ABT */}
       <section className="bg-navy-950 text-white">
         <div className="container-px mx-auto max-w-6xl py-16 sm:py-24">
@@ -153,6 +164,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Certifications — fiabilité */}
+      <Certifications />
+
       {/* Coverage */}
       <section className="container-px mx-auto max-w-6xl py-16 sm:py-24">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
@@ -182,6 +196,9 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Témoignages */}
+      <Testimonials />
 
       {/* CTA */}
       <section className="container-px mx-auto max-w-6xl pb-20">

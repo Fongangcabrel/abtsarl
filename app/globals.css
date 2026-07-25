@@ -166,6 +166,51 @@ textarea:focus-visible {
   animation-delay: var(--node-delay, 0ms);
 }
 
+/* ---------------------------------------------------------------
+   Diaporama du bandeau : lent travelling sur l'image active pour
+   l'effet « film ». Le fondu entre images est géré côté composant.
+   --------------------------------------------------------------- */
+@keyframes ken-burns {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.ken-burns {
+  animation: ken-burns 7s ease-out forwards;
+}
+
+/* ---------------------------------------------------------------
+   Bande défilante des certifications : deux longueurs identiques
+   qui se suivent, décalées de -50% pour un défilement sans couture.
+   Pause au survol pour laisser lire les logos.
+   --------------------------------------------------------------- */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 /* Pulsation espacée du bouton WhatsApp, juste assez pour attirer l'œil */
 @keyframes soft-ping {
   0%, 80% {
@@ -210,5 +255,10 @@ textarea:focus-visible {
 
   .soft-ping {
     display: none;
+  }
+
+  .ken-burns,
+  .marquee-track {
+    animation: none !important;
   }
 }
